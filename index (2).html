@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Next Chapter Collective</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: warm, encouraging, grown-up; a circle of women cheering each other on
+   IDEA: an open book — every visitor is turning to her next chapter
+   PICTURE: the NCC open-book mark, large, with ribbon and sparkles, on a plum field
+   COLOUR and TYPE: logo palette — plum, coral, gold on cream; Fraunces + DM Sans
+   LAYOUT: plum hero band, cream reading bands, gold ribbon accents, plum footer */
+:root{color-scheme:light dark;
+  --plum:#3B1F4A;--coral:#E5513D;--coral2:#FF6B57;--gold:#FFB627;--cream:#FFF3EA;
+  --bg:light-dark(#FFF3EA,#1E1026);--ink:light-dark(#2A1534,#FBEFE6);--soft:light-dark(#6A5272,#CDB9D3);
+  --card:light-dark(#FFFFFF,#2B1836);--line:light-dark(#EBD9CC,#432A50);--hl:light-dark(#3B1F4A,#FFF3EA);--acc:light-dark(#C7402D,#FF7A66)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 'DM Sans',system-ui,sans-serif;overflow-x:clip}
+a{color:var(--acc)}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.08;text-wrap:balance;margin:0}
+h1{font-size:clamp(36px,5.4vw,58px);letter-spacing:-.5px}
+h2{font-size:clamp(30px,3.6vw,42px);color:var(--hl)}
+h3{font-size:22px;color:var(--hl)}
+p{margin:0;max-width:66ch}
+.wrap{max-width:1180px;margin:0 auto}
+.band{padding:clamp(40px,6vw,88px) max(5vw,18px)}
+.plum{background:var(--plum);color:var(--cream)}
+.plum h2,.plum h3{color:var(--cream)}
+.lead{font-size:18px;color:var(--soft)}
+.plum .lead{color:#E6D6EA}
+
+/* header */
+header{position:sticky;top:0;z-index:10;background:var(--plum);color:var(--cream);border-bottom:3px solid var(--gold)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px max(5vw,18px);max-width:1280px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:10px;color:var(--cream);text-decoration:none}
+.brand svg{width:46px;height:37px;flex:none}
+.brand b{font-family:'Fraunces',serif;font-size:21px;font-weight:600;line-height:1}
+.brand b i{color:var(--coral2)}
+.brand small{display:block;font-size:11px;letter-spacing:3px;font-weight:700;margin-top:3px;color:var(--gold)}
+nav{display:flex;gap:4px;flex-wrap:wrap}
+nav a{color:var(--cream);text-decoration:none;font-weight:500;padding:10px 14px;border-radius:999px;min-height:44px;display:inline-flex;align-items:center}
+nav a:hover{background:rgba(255,255,255,.1)}
+nav a[aria-current=page]{background:var(--gold);color:var(--plum);font-weight:700}
+
+/* buttons */
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:12px 22px;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid transparent;cursor:pointer;font:700 16px 'DM Sans',sans-serif}
+.btn.pri{background:var(--coral);color:#fff}
+.btn.pri:hover{background:#C9402E}
+.btn.gh{border-color:currentColor;color:inherit;background:transparent}
+.btn:focus-visible,nav a:focus-visible,input:focus-visible,textarea:focus-visible,.cbtn:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center}
+.hero h1{color:var(--cream)}
+.hero h1 i{color:var(--coral2)}
+.hero .tag{color:var(--gold);font-weight:700;font-size:18px;margin:18px 0 12px}
+.hero p{color:#EBDDEE;font-size:18px;margin-bottom:28px}
+.art{position:relative;aspect-ratio:5/4}
+.art svg{width:100%;height:100%;display:block;overflow:visible}
+.spark{transform-origin:center;transform-box:fill-box;animation:tw 3.6s ease-in-out infinite}
+.spark.b{animation-delay:1.2s}
+@keyframes tw{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.8);opacity:.75}}
+@media(prefers-reduced-motion:reduce){.spark{animation:none}}
+
+/* pillars */
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:32px}
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:32px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px}
+.card h3{margin:14px 0 10px}
+.card ul{margin:14px 0 0;padding-left:20px}
+.card li{margin:5px 0}
+.ico{width:52px;height:52px;border-radius:50%;display:grid;place-items:center}
+.ico svg{width:28px;height:28px}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:start}
+.quote{font-family:'Fraunces',serif;font-size:clamp(24px,2.6vw,32px);line-height:1.25;color:var(--hl)}
+.quote i{color:var(--acc)}
+.who{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:12px}
+.who li{display:flex;gap:12px;align-items:flex-start;font-size:17px}
+.who li::before{content:"";flex:none;width:14px;height:14px;margin-top:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(255,182,39,.25)}
+
+/* event feature */
+.feat{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(24px,4vw,56px);align-items:center}
+.meta{display:grid;gap:8px;margin:18px 0 24px;padding:0;list-style:none}
+.meta li{display:flex;gap:10px;align-items:baseline}
+.meta b{color:var(--gold);min-width:4.6em;font-size:14px}
+.pill{display:inline-block;padding:5px 12px;border-radius:999px;font-size:13px;font-weight:700;background:var(--gold);color:var(--plum)}
+.pill.past{background:var(--coral);color:#fff}
+
+/* carousel */
+.car{position:relative}
+.track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;border-radius:22px;scrollbar-width:none}
+.track::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:start;aspect-ratio:4/3;border-radius:22px;overflow:hidden;position:relative;margin:0}
+.slide img{width:100%;height:100%;object-fit:cover;display:block}
+.slide figcaption{position:absolute;left:0;right:0;bottom:0;padding:28px 18px 14px;color:#fff;font-weight:500;background:linear-gradient(transparent,rgba(30,12,40,.8))}
+.ph{width:100%;height:100%;display:grid;place-items:center;text-align:center;padding:24px}
+.ph svg{width:38%;max-width:180px;height:auto}
+.ph span{display:block;font-weight:700;margin-top:10px}
+.ctrl{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px}
+.cbtn{width:48px;height:48px;border-radius:50%;border:2px solid var(--gold);background:transparent;color:var(--gold);cursor:pointer;display:grid;place-items:center}
+.cbtn:hover{background:var(--gold);color:var(--plum)}
+.dots{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.dots button{width:12px;height:12px;border-radius:50%;border:0;padding:0;background:rgba(255,243,234,.35);cursor:pointer}
+.dots button[aria-current=true]{background:var(--gold);width:28px;border-radius:6px}
+
+/* highlights + coming soon */
+.hl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:28px}
+.hl div{border-top:4px solid var(--gold);padding-top:14px}
+.hl b{display:block;font-family:'Fraunces',serif;font-size:20px;color:var(--hl);margin-bottom:6px}
+.soon{position:relative;overflow:hidden}
+.soon .pill{position:absolute;top:22px;right:22px}
+.soon h3{margin-top:14px;padding-right:96px}
+
+/* contact */
+.person{display:flex;gap:20px;align-items:center}
+.av{flex:none;width:88px;height:88px;border-radius:50%;background:var(--coral);color:#fff;display:grid;place-items:center;font:600 32px 'Fraunces',serif;box-shadow:0 0 0 5px var(--gold)}
+.links{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:12px}
+.links a{display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:16px;background:var(--card);border:1px solid var(--line);color:var(--ink);text-decoration:none;min-height:60px}
+.links a:hover{border-color:var(--coral)}
+.links svg{width:26px;height:26px;flex:none;color:var(--acc)}
+.links small{display:block;color:var(--soft);font-size:13px}
+.links span{overflow-wrap:anywhere;font-weight:700}
+form{display:grid;gap:16px}
+label{font-weight:700;font-size:15px;display:grid;gap:6px}
+input,textarea{font:16px 'DM Sans',sans-serif;padding:13px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);width:100%}
+textarea{min-height:140px;resize:vertical}
+.note{font-size:14px;color:var(--soft)}
+.ok{display:none;padding:16px;border-radius:14px;background:light-dark(#FFF0CC,#3A2A10);border:1px solid var(--gold)}
+.ok.show{display:block}
+
+footer{background:var(--plum);color:#E6D6EA;border-top:3px solid var(--gold)}
+footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+footer a{color:var(--gold)}
+footer .tl{font-family:'Fraunces',serif;font-size:22px;color:var(--cream)}
+
+.view{display:none}.view.on{display:block}
+@media(max-width:860px){.hero,.feat,.split{grid-template-columns:minmax(0,1fr)}.three{grid-template-columns:minmax(0,1fr)}.hl{grid-template-columns:repeat(2,minmax(0,1fr))}.art{max-width:440px;margin:0 auto;width:100%}}
+@media(max-width:600px){.two{grid-template-columns:minmax(0,1fr)}.hl{grid-template-columns:minmax(0,1fr)}.bar{justify-content:center}nav a{padding:10px 12px}.hero .art{order:-1;max-width:300px}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="book">
+      <path d="M100 130 C80 115 40 112 14 122 L14 52 C40 42 80 45 100 60 Z" fill="#E5513D"/>
+      <path d="M100 130 C120 115 160 112 186 122 L186 52 C160 42 120 45 100 60 Z" fill="#FFF3EA"/>
+      <path d="M24 74 C48 64 76 68 92 80" fill="none" stroke="#3B1F4A" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 8"/>
+      <path d="M108 80 C124 68 152 64 176 74" fill="none" stroke="#E5513D" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 8"/>
+      <path d="M93 60 L107 60 L107 152 L100 143 L93 152 Z" fill="#FFB627"/>
+    </g>
+  </defs>
+</svg>
+
+<header>
+  <div class="bar">
+    <a class="brand" href="#home" aria-label="Next Chapter Collective home">
+      <svg viewBox="0 -4 200 160" aria-hidden="true"><use href="#book"/><path d="M100 0 C102 14 106 18 120 22 C106 26 102 30 100 44 C98 30 94 26 80 22 C94 18 98 14 100 0 Z" fill="#FFB627"/></svg>
+      <span><b>Next <i>Chapter</i></b><small>COLLECTIVE</small></span>
+    </a>
+    <nav aria-label="Main">
+      <a href="#home" data-v="home">Home</a>
+      <a href="#events" data-v="events">Events</a>
+      <a href="#contact" data-v="contact">Contact us</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- HOME -->
+<section class="view" id="v-home">
+  <div class="band plum">
+    <div class="wrap hero">
+      <div>
+        <h1>Your career story isn't finished. <i>Let's write the next chapter.</i></h1>
+        <p class="tag">Learn it. Wear it. Own the room.</p>
+        <p>Next Chapter Collective helps Atlanta women make their next career move with skills, confidence and wellness, at a price anyone can afford.</p>
+        <div class="btns">
+          <a class="btn pri" href="#events">See our events</a>
+          <a class="btn gh" href="https://www.linkedin.com/groups/42827148/">Join the LinkedIn group</a>
+        </div>
+      </div>
+      <div class="art">
+        <svg viewBox="-20 -10 240 190" role="img" aria-label="Open book with a gold bookmark ribbon and two sparkles">
+          <ellipse cx="100" cy="160" rx="92" ry="10" fill="#2A1434"/>
+          <use href="#book"/>
+          <path class="spark" d="M100 0 C102 14 106 18 120 22 C106 26 102 30 100 44 C98 30 94 26 80 22 C94 18 98 14 100 0 Z" fill="#FFB627"/>
+          <path class="spark b" d="M152 10 C153 17 155 19 162 21 C155 23 153 25 152 32 C151 25 149 23 142 21 C149 19 151 17 152 10 Z" fill="#FF6B57"/>
+          <path class="spark b" d="M30 18 C31 23 32 24 37 25 C32 26 31 27 30 32 C29 27 28 26 23 25 C28 24 29 23 30 18 Z" fill="#FFF3EA"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="wrap">
+      <h2>One collective, two paths forward</h2>
+      <p class="lead" style="margin-top:12px">Most career programs skip wellbeing, and most fitness events skip careers. We do both, so a workshop includes wellness and a 5K doubles as a networking event.</p>
+      <div class="two">
+        <article class="card">
+          <div class="ico" style="background:#FFE3DE"><svg viewBox="0 0 24 24" fill="none" stroke="#C7402D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg></div>
+          <h3>Career pivots</h3>
+          <p>Workshops and programs for women changing careers, from first idea to first interview.</p>
+          <ul><li>AI fluency for everyday work</li><li>Building your personal brand</li><li>Styling to command the room</li><li>Pitch practice for every setting</li></ul>
+        </article>
+        <article class="card">
+          <div class="ico" style="background:#FFF0CC"><svg viewBox="0 0 24 24" fill="none" stroke="#B07800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="4.5" r="2"/><path d="M7 21l3-6 3 2v5M10 15l1.5-5L16 12l3-2M11.5 10L8 9l-3 3"/></svg></div>
+          <h3>Wellness events</h3>
+          <p>5K races, walks and other fitness events. Wellness is part of career success, not an add-on.</p>
+          <ul><li>Community 5Ks and walks</li><li>Group walks followed by coffee and networking</li><li>Affordable, welcoming, all paces</li></ul>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <div class="band" style="background:light-dark(#FBE6D8,#26142F)">
+    <div class="wrap split">
+      <div>
+        <h2>Who we're for</h2>
+        <ul class="who">
+          <li>Women changing careers</li>
+          <li>Women returning to work after a break</li>
+          <li>Women moving into tech and AI-enabled roles</li>
+          <li>Anyone ready to show up as her most rooted, radiant and real self</li>
+        </ul>
+      </div>
+      <div>
+        <p class="quote">We started with <i>The Rewrite</i>: a free half-day workshop where Atlanta women built their brand, practiced their pitch and left styled for the room.</p>
+        <div class="btns" style="margin-top:24px"><a class="btn pri" href="#events">Relive The Rewrite</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="view" id="v-events">
+  <div class="band plum">
+    <div class="wrap feat">
+      <div>
+        <span class="pill past">Past event</span>
+        <h2 style="margin-top:16px">The Rewrite: Rooted, Radiant &amp; Real</h2>
+        <ul class="meta">
+          <li><b>When</b><span>Saturday, November 14, 2026 · 9 a.m. – 1:30 p.m.</span></li>
+          <li><b>Where</b><span>InspiredU Atlanta</span></li>
+          <li><b>Hosts</b><span>Michelle Black and Patrice Meadows</span></li>
+        </ul>
+        <p class="lead">Our first event: a free, half-day workshop open to the public. Women came for breakfast and stayed to rewrite their story with an AI brand builder, a 30-second pitch builder, styling and a shop of corporate-donated clothing.</p>
+      </div>
+      <div class="car" aria-roledescription="carousel" aria-label="Photos from The Rewrite">
+        <div class="track" id="track" tabindex="0"></div>
+        <div class="ctrl">
+          <button class="cbtn" id="prev" aria-label="Previous photo"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <div class="dots" id="dots"></div>
+          <button class="cbtn" id="next" aria-label="Next photo"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="wrap">
+      <h2>What happened at The Rewrite</h2>
+      <div class="hl">
+        <div><b>Brand builder</b>An AI tool turned each woman's superpowers into a personal brand, leaving out the skills she'd rather not be known for.</div>
+        <div><b>Pitch builder</b>Guided questions produced a 30-second pitch for a conference, a meetup, a referral and a gala.</div>
+        <div><b>Style session</b>AI styling and a shop of corporate-donated clothing, so everyone left ready to command the room.</div>
+        <div><b>Food &amp; community</b>A light breakfast and lunch, and a room full of women cheering each other on.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="band" style="background:light-dark(#FBE6D8,#26142F)">
+    <div class="wrap">
+      <h2>Upcoming events</h2>
+      <p class="lead" style="margin-top:12px">New dates are on the way for 2027. Join the LinkedIn group or follow us on Instagram to hear first.</p>
+      <div class="three" id="soon"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="view" id="v-contact">
+  <div class="band plum">
+    <div class="wrap">
+      <h2>Contact us</h2>
+      <p class="lead" style="margin-top:12px">Questions, partnership ideas or want to help with the next event? We'd love to hear from you.</p>
+    </div>
+  </div>
+  <div class="band">
+    <div class="wrap split">
+      <div>
+        <div class="person">
+          <div class="av" aria-hidden="true">MB</div>
+          <div><h3>Michelle Black</h3><p style="color:var(--soft);font-weight:500">Content Curator</p></div>
+        </div>
+        <ul class="links">
+          <li><a href="mailto:atlnextchaptercollective@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><div><small>Email</small><span>atlnextchaptercollective@gmail.com</span></div></a></li>
+          <li><a href="https://www.linkedin.com/groups/42827148/"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 11-.01 5 2.5 2.5 0 01.01-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V21h-4z"/></svg><div><small>LinkedIn group</small><span>ATL Next Chapter Collective</span></div></a></li>
+          <li><a href="https://www.instagram.com/atl_ncc/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg><div><small>Instagram</small><span>@atl_ncc</span></div></a></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:18px">Send us a note</h3>
+        <form id="cf" novalidate>
+          <label>Your name<input id="fn" name="name" autocomplete="name" required></label>
+          <label>Your email<input id="fe" name="email" type="email" autocomplete="email" required></label>
+          <label>Message<textarea id="fm" name="message" required></textarea></label>
+          <button class="btn pri" type="submit">Open in my email app</button>
+          <p class="note">This opens a pre-filled email to atlnextchaptercollective@gmail.com. Nothing is sent until you send it.</p>
+          <div class="ok" id="ok" role="status"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="band" style="padding-block:36px">
+  <div class="wrap row">
+    <div><div class="tl">Next Chapter Collective</div><div>Atlanta, GA · Learn it. Wear it. Own the room.</div></div>
+    <div><a href="mailto:atlnextchaptercollective@gmail.com">atlnextchaptercollective@gmail.com</a> · <a href="https://www.instagram.com/atl_ncc/">@atl_ncc</a></div>
+    <div style="width:100%;font-size:14px">© 2026 Next Chapter Collective</div>
+  </div>
+</footer>
+
+<script>
+{
+  // Event photos: add {src, cap} entries; src is a file path published alongside this page, e.g. "photos/rewrite-01.jpg"
+  const PHOTOS = [];
+  const SOON = [
+    {t:'Q1 2027 activation', d:'Our first event of the new year. Date and venue coming soon.'},
+    {t:'The Rewrite returns', d:'Our flagship half-day workshop on brand, pitch and style, back for another round.'},
+    {t:'Move & Mingle', d:'A group walk or run, then coffee and networking. Wellness and career, side by side.'}
+  ];
+
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const views = ['home','events','contact'];
+  const show = () => {
+    const h = location.hash.slice(1), v = views.includes(h) ? h : 'home';
+    for (const n of views) document.getElementById('v-'+n).classList.toggle('on', n===v);
+    for (const a of document.querySelectorAll('nav a')) { if (a.dataset.v===v) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); }
+    if (views.includes(h)) window.scrollTo(0,0);
+  };
+  window.addEventListener('hashchange', show); show();
+
+  // upcoming
+  document.getElementById('soon').innerHTML = SOON.map(e =>
+    `<article class="card soon"><span class="pill">Coming soon</span><h3>${esc(e.t)}</h3><p>${esc(e.d)}</p></article>`).join('');
+
+  // carousel
+  const tones = [['#E5513D','#FFF3EA'],['#FFB627','#3B1F4A'],['#FFF3EA','#3B1F4A'],['#5A3268','#FFF3EA']];
+  const slides = PHOTOS.length ? PHOTOS.map(p =>
+      `<figure class="slide"><img src="${esc(p.src)}" alt="${esc(p.cap||'Photo from The Rewrite')}" loading="lazy">${p.cap?`<figcaption>${esc(p.cap)}</figcaption>`:''}</figure>`)
+    : tones.map(([bg,fg],i) =>
+      `<figure class="slide"><div class="ph" style="background:${bg};color:${fg}"><div><svg viewBox="0 -4 200 160" aria-hidden="true"><use href="#book"/></svg><span>The Rewrite · photo ${i+1}</span></div></div></figure>`);
+  const track = document.getElementById('track'), dots = document.getElementById('dots');
+  track.innerHTML = slides.join('');
+  dots.innerHTML = slides.map((_,i)=>`<button aria-label="Go to photo ${i+1}"></button>`).join('');
+  const items = [...track.children], db = [...dots.children];
+  let cur = 0;
+  const go = i => { cur = (i + items.length) % items.length; track.scrollTo({left: items[cur].offsetLeft - track.offsetLeft, behavior:'smooth'}); };
+  const mark = () => { const i = Math.round(track.scrollLeft / Math.max(1, track.clientWidth + 14)); cur = i; db.forEach((b,k)=>b.setAttribute('aria-current', k===i)); };
+  track.addEventListener('scroll', () => requestAnimationFrame(mark));
+  document.getElementById('prev').onclick = () => go(cur-1);
+  document.getElementById('next').onclick = () => go(cur+1);
+  db.forEach((b,k)=>b.onclick=()=>go(k));
+  track.addEventListener('keydown', e => { if (e.key==='ArrowRight'){e.preventDefault();go(cur+1)} if (e.key==='ArrowLeft'){e.preventDefault();go(cur-1)} });
+  mark();
+
+  // contact form
+  const f = document.getElementById('cf'), ok = document.getElementById('ok');
+  f.addEventListener('submit', e => {
+    e.preventDefault();
+    const val = id => document.getElementById(id).value.trim();
+    const n = val('fn'), em = val('fe'), m = val('fm');
+    if (!n || !em || !m) { ok.textContent = 'Please fill in your name, email and message.'; ok.classList.add('show'); return; }
+    const url = 'mailto:atlnextchaptercollective@gmail.com?subject=' + encodeURIComponent('Hello from ' + n) +
+      '&body=' + encodeURIComponent(m + '\n\n' + n + '\n' + em);
+    location.href = url;
+    ok.textContent = 'Your email app should open with your note ready to send. If it doesn\'t, email us directly at atlnextchaptercollective@gmail.com.';
+    ok.classList.add('show');
+  });
+}
+</script>
+</body>
+</html>
